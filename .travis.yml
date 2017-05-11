@@ -6,6 +6,8 @@ script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
 - bundle exec rspec -fd spec/
+notifications:
+  email: false
 deploy:
   provider: heroku
   app: rubyonrails2017
