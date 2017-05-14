@@ -8,16 +8,8 @@
   <%= @stock.symbol%>
 </p>
 
-<%= line_chart @weeks, title:"Historical value development" %>
-<%= line_chart @threemonths, title:"3 month value development" %>
-
-<% if @weeks %>
-    <ul>
-      <% @weeks.each do |week| %>
-          <li><%= week %></li>
-      <% end %>
-    </ul>
-<% end %>
+<%= line_chart @weeks, title:"Historical value development", library: {backgroundColor: "#eee"} %>
+<%= line_chart @threemonths, title:"3 month value development", library: {backgroundColor: "#eee"}%>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>
