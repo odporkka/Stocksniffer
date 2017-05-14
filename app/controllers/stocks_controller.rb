@@ -14,6 +14,7 @@ class StocksController < ApplicationController
   def show
     @weeks = AlphaVantageApi.fetch_weekly(@stock.symbol)
     @threemonths = AlphaVantageApi.three_month_weekly(@stock.symbol)
+    @threemonthpr = AlphaVantageApi.three_month_dev_pr(@stock.symbol)
   end
 
   # GET /stocks/new

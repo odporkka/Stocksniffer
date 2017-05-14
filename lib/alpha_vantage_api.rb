@@ -9,6 +9,13 @@ class AlphaVantageApi
     return data[0, 13]
   end
 
+  def self.three_month_dev_pr(symbol)
+      data = self.three_month_weekly(symbol)
+      sub = data[0][1].to_f - data[12][1].to_f
+      pr = sub / data[12][1].to_f * 100
+      return pr.round(2)
+  end
+
   def self.weekly_time_series(symbol)
     url = "http://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=#{symbol}&apikey=#{self.key}"
     response = HTTParty.get "#{url}"
