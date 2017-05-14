@@ -3,17 +3,21 @@
 <p>
   <strong>Name:</strong>
   <%= @stock.name %>
+  </br>
+  <strong>Symbol:</strong>
+  <%= @stock.symbol%>
 </p>
 
-<p>
-  <strong>Current price:</strong>
-  <%= @stock.current_price %>
-</p>
+<%= line_chart @weeks, title:"Historical value development" %>
+<%= line_chart @threemonths, title:"3 month value development" %>
 
-<p>
-  <strong>Abb:</strong>
-  <%= @stock.abb %>
-</p>
+<% if @weeks %>
+    <ul>
+      <% @weeks.each do |week| %>
+          <li><%= week %></li>
+      <% end %>
+    </ul>
+<% end %>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>

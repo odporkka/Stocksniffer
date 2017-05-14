@@ -1,3 +1,5 @@
+require 'alpha_vantage_api'
+
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +12,8 @@ class StocksController < ApplicationController
   # GET /stocks/1
   # GET /stocks/1.json
   def show
+    @weeks = AlphaVantageApi.fetch_weekly(@stock.symbol)
+    @threemonths = AlphaVantageApi.three_month_weekly(@stock.symbol)
   end
 
   # GET /stocks/new

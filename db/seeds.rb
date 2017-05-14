@@ -6,4 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-s1 = Stock.create name:"Testi Oy", current_price:99.99, abb:"TST"
+s1 = Stock.create name:"Microsoft Corporation", symbol:"MSFT"
+s2 = Stock.create name:"Apple Inc.", symbol:"AAPL"
+s3 = Stock.create name:"Facebook Inc.", symbol:"FB"
+s4 = Stock.create name:"Tesla Inc", symbol:"TSLA"
