@@ -7,7 +7,7 @@ notifications:
   email: false
 deploy:
   provider: heroku
-  app: rubyonrails2017
+  app: stocksniffer
   run: rake db:migrate
   api_key:
     secure: ogb/4LcNYQESzbSayS6yOG/EK5JFLF7roX3u+tVuaWJwRc880JP8ZgYrtyxh+2qtQJaWGZD6GpbHoI8f7VRPMBwVeVlBu+F2p8KJQi/I6MAWS1YGQcGBPX/SHoPmdkFqZTMRB8TXPBeSnKd9F993L2hH2/VaZUqKWYRpANInp7/zK+PEstfiALe01YXcCfLmuInV39znsjjy7veDGAHAJ44H++Db2BVtvmq/xJ5OYByasJXLMBiDRamVn410P9UlToBYd3Oyt2OBf2Npz2986D89bI5llTV3Fz47gFFG7Dw1aw/PZ0alYKRGtVkGRjfau+oI+AuScI7bxrF4H5JSZTbRPXyKZNIh3bd/QqrSEfmGngt3mNZUd3lDGajchOhFZwzA8Lqj7G93cuSrBZHOGmBziLnOjuxwllrxC/FczhhQ+yxD4RKtbtSCHcNHutL4/Cqls5CgViGRPcZrvyhzZ84VMnKK0xGN05JqdffBWBrjAWjnQWvuBaTSEbIOyjwHwKw6mU52+rbPaTzs7jRHbLnoDMVy3dV/UngFuffpSxFc0UkpRGvr9TvvABem32/BeuGFbTkr+/AH+3BxYXXvjRPOPl2Rw4No4tIEQgH/Z+G/de28aeRrcmsa//4JZES+ZWOGSYNdx/1rL9D5Nor67F73jbjUA6PGSqE+TvImnQI=
