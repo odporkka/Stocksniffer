@@ -1,0 +1,6 @@
+Symbol lists downloaded manually from:
+http://www.eoddata.com/symbols.aspx
+
+Username: odeprox  pass: qwe123 e-mail: otto.porkka@luukku.com
+
+Also http://www.nasdaq.com/screening/company-list.aspx might be better

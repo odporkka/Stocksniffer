@@ -1,4 +1,5 @@
 require 'alpha_vantage_api'
+require 'csv_reader'
 
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
@@ -64,6 +65,12 @@ class StocksController < ApplicationController
       format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def readCsv
+    CsvReader.read_stocks_from_symbol_files
+    @stocks = Stock.all
+    render :index
   end
 
   private

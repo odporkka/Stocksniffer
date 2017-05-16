@@ -16,3 +16,7 @@
 !/log/.keep
 /tmp
 .idea*
+.byebug_history
+
+#Ignore OS specific files
+.DS_Store
