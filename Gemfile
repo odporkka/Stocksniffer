@@ -35,6 +35,7 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'active_median'
 gem 'bootstrap-sass'
+gem 'will_paginate', '~> 3.1.0'
 
 group :production do
   gem 'pg'

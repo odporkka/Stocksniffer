@@ -1,8 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Stocks</h1>
+<h1>Stocks (<%= @stocks.count %>)</h1>
 
-<%= button_to 'Load from CSV', action: 'readCsv' %>
+<div>
+  <%= form_tag stocks_path, :method => 'get' do %>
+      <p>
+        Name: <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", class:'btn-xs btn-primary'%>
+      </p>
+  <% end %>
+</div>
+
+<%= will_paginate @stocks %>
 
 <table class="table table-hover">
   <thead>
@@ -24,6 +33,12 @@
   </tbody>
 </table>
 
+<%= will_paginate @stocks %>
+
 <br>
 
 <%= link_to 'New Stock', new_stock_path %>
+<p>
+  <%= button_to 'Load from CSV', action: 'readCsv' %>
+</p>
+

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @xetra_instrument.name %>
+</p>
+
+<p>
+  <strong>Isin:</strong>
+  <%= @xetra_instrument.isin %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @xetra_instrument.type %>
+</p>
+
+<%= link_to 'Edit', edit_xetra_instrument_path(@xetra_instrument) %> |
+<%= link_to 'Back', xetra_instruments_path %>

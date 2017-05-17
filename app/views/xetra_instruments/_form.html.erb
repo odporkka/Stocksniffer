@@ -1,0 +1,32 @@
+<%= form_for(xetra_instrument) do |f| %>
+  <% if xetra_instrument.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(xetra_instrument.errors.count, "error") %> prohibited this xetra_instrument from being saved:</h2>
+
+      <ul>
+      <% xetra_instrument.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :isin %>
+    <%= f.text_field :isin %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type %>
+    <%= f.text_field :type %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

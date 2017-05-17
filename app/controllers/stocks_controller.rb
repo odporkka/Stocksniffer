@@ -3,11 +3,11 @@ require 'csv_reader'
 
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  before_action :set_stocks, only: [:index]
 
   # GET /stocks
   # GET /stocks.json
   def index
-    @stocks = Stock.all
   end
 
   # GET /stocks/1
@@ -16,6 +16,10 @@ class StocksController < ApplicationController
     @weeks = AlphaVantageApi.fetch_weekly(@stock.symbol)
     @threemonths = AlphaVantageApi.three_month_weekly(@stock.symbol)
     @threemonthpr = AlphaVantageApi.three_month_dev_pr(@stock.symbol)
+  end
+
+  def search
+    redirect_to stocks_path
   end
 
   # GET /stocks/new
@@ -69,18 +73,24 @@ class StocksController < ApplicationController
 
   def readCsv
     CsvReader.read_stocks_from_symbol_files
-    @stocks = Stock.all
-    render :index
+    redirect_to stocks_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_stock
-      @stock = Stock.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_stocks
+    @stocks = Stock.
+        where('name like ?', "%#{params[:search]}%").
+        paginate(:page => params[:page], :per_page => 50).
+        order('name')
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def stock_params
-      params.require(:stock).permit(:name, :current_price, :abb)
-    end
+  def set_stock
+    @stock = Stock.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def stock_params
+    params.require(:stock).permit(:name, :current_price, :abb)
+  end
 end

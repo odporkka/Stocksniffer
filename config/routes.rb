@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :xetra_instruments
   resources :stocks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   post 'stocks/readCsv' => 'stocks#readCsv'
+  post 'xetra_instruments/readCsv' => 'xetra_instruments#readCsv'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

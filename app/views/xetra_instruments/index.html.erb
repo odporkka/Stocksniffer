@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Xetra Instruments (<%= @xetra_instruments.count %>)</h1>
+
+<div>
+  <%= form_tag xetra_instruments_path, :method => 'get' do %>
+      <p>
+        Name: <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", class:'btn-xs btn-primary'%>
+      </p>
+  <% end %>
+</div>
+
+<%= will_paginate @stocks %>
+
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Isin</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @xetra_instruments.each do |xetra_instrument| %>
+      <tr>
+        <td><%= xetra_instrument.name %></td>
+        <td><%= xetra_instrument.isin %></td>
+        <td><%= xetra_instrument.instrument_type %></td>
+        <td><%= link_to 'Show', xetra_instrument %></td>
+        <td><%= link_to 'Edit', edit_xetra_instrument_path(xetra_instrument) %></td>
+        <td><%= link_to 'Destroy', xetra_instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @xetra_instruments %>
+
+<br>
+
+<%= link_to 'New Xetra Instrument', new_xetra_instrument_path %>
+<p>
+  <%= button_to 'Load from CSV', action: 'readCsv' %>
+</p>

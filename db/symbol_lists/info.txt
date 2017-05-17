@@ -4,3 +4,9 @@ http://www.eoddata.com/symbols.aspx
 Username: odeprox  pass: qwe123 e-mail: otto.porkka@luukku.com
 
 Also http://www.nasdaq.com/screening/company-list.aspx might be better
+
+XETRA:
+
+http://xetra.com/xetra-en/allTradableInstruments.csv
+remove extra lines at start with vim etc.
+cut -f2-3,36 -d ';' allTradableInstruments.csv > xetra_instrument_list.csv
