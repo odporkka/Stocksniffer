@@ -1,3 +1,28 @@
 <h1>Stocksniffer v1.0</h1>
 
-<%= link_to 'Find stocks', stocks_path %>
+<h4>Test Google Finance scraper: </h4>
+
+<div>
+  <%= form_tag root_path do %>
+      <p>
+        Symbol: <%= text_field_tag 'search', 'AAPL' %>
+        <%= submit_tag "Search", class:'btn-xs btn-primary'%>
+      </p>
+  <% end %>
+</div>
+
+<div>
+  <%= @stock %>
+</div>
+
+<div>
+  <br>
+  Apple Inc - AAPL<br>
+  Facebook Inc. - FB<br>
+  Microsoft Corporation - MSFT<br>
+  Tesla Inc. - TSLA<br>
+  ... <br>
+  (https://www.google.com/finance?q=#{symbol}) <br>
+  <br>
+  <i>Latest fetch as HTML at Rails.root("tmp/latest_search.html")</i>
+</div>

@@ -26,11 +26,9 @@
   <tbody>
     <% @xetra_instruments.each do |xetra_instrument| %>
       <tr>
-        <td><%= xetra_instrument.name %></td>
+        <td><%= link_to xetra_instrument.name, xetra_instrument %></td>
         <td><%= xetra_instrument.isin %></td>
         <td><%= xetra_instrument.instrument_type %></td>
-        <td><%= link_to 'Show', xetra_instrument %></td>
-        <td><%= link_to 'Edit', edit_xetra_instrument_path(xetra_instrument) %></td>
         <td><%= link_to 'Destroy', xetra_instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

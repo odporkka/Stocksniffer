@@ -36,6 +36,8 @@ gem 'groupdate'
 gem 'active_median'
 gem 'bootstrap-sass'
 gem 'will_paginate', '~> 3.1.0'
+gem 'pry'
+gem 'nokogiri'
 
 group :production do
   gem 'pg'

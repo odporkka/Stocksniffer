@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'home#index'
   post 'stocks/readCsv' => 'stocks#readCsv'
   post 'xetra_instruments/readCsv' => 'xetra_instruments#readCsv'
+  post '/' => 'home#scrape'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
