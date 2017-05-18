@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170517084220) do
 
-  create_table "stocks", force: :cascade do |t|
+  create_table "nasdaq_instruments", force: :cascade do |t|
     t.string   "name"
     t.string   "symbol"
     t.datetime "created_at", null: false

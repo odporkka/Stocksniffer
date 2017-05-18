@@ -2,10 +2,10 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @stock.name %>
+  <%= @nasdaq_instrument.name %>
   </br>
   <strong>Symbol:</strong>
-  <%= @stock.symbol%>
+  <%= @nasdaq_instrument.symbol%>
   </br>
   <strong>3 month movement:</strong>
   <% if @threemonthpr >= 0 %>
@@ -18,5 +18,5 @@
 <%= line_chart @weeks, title:"Historical value development", library: {backgroundColor: "#eee"} %>
 <%= line_chart @threemonths, title:"3 month value development", library: {backgroundColor: "#eee"}%>
 
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>
+<%= link_to 'Edit', edit_nasdaq_instrument_path(@nasdaq_instrument) %> |
+<%= link_to 'Back', nasdaq_instruments_path %>

@@ -2,10 +2,10 @@ require 'csv'
 
 class CsvReader
 
-  def self.read_stocks_from_symbol_files
+  def self.read_nasdaq_instruments_from_symbol_files
     CSV.foreach(self.parse_headers(self.nasdaq_file, self.nasdaq_headers), :headers => true) do |row|
       begin
-        Stock.create!(row.to_hash.slice("name", "symbol"))
+        NasdaqInstrument.create!(row.to_hash.slice("name", "symbol"))
       rescue Exception => e
         puts "Error #{e}"
         next

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :xetra_instruments
-  resources :stocks
+  resources :nasdaq_instruments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  post 'stocks/readCsv' => 'stocks#readCsv'
+  post 'nasdaq_instruments/readCsv' => 'nasdaq_instruments#readCsv'
   post 'xetra_instruments/readCsv' => 'xetra_instruments#readCsv'
   post '/' => 'home#scrape'
 

@@ -1,0 +1,96 @@
+require 'alpha_vantage_api'
+require 'csv_reader'
+
+class NasdaqInstrumentsController < ApplicationController
+  before_action :set_nasdaq_instrument, only: [:show, :edit, :update, :destroy]
+  before_action :set_nasdaq_instruments, only: [:index]
+
+  # GET /nasdaq_instruments
+  # GET /nasdaq_instruments.json
+  def index
+  end
+
+  # GET /nasdaq_instruments/1
+  # GET /nasdaq_instruments/1.json
+  def show
+    @weeks = AlphaVantageApi.fetch_weekly(@nasdaq_instrument.symbol)
+    @threemonths = AlphaVantageApi.three_month_weekly(@nasdaq_instrument.symbol)
+    @threemonthpr = AlphaVantageApi.three_month_dev_pr(@nasdaq_instrument.symbol)
+  end
+
+  def search
+    redirect_to nasdaq_instruments_path
+  end
+
+  # GET /nasdaq_instruments/new
+  def new
+    @nasdaq_instrument = NasdaqInstrument.new
+  end
+
+  # GET /nasdaq_instruments/1/edit
+  def edit
+  end
+
+  # POST /nasdaq_instruments
+  # POST /nasdaq_instruments.json
+  def create
+    @nasdaq_instrument = NasdaqInstrument.new(nasdaq_instrument_params)
+
+    respond_to do |format|
+      if @nasdaq_instrument.save
+        format.html { redirect_to @nasdaq_instrument, notice: 'nasdaq_instrument was successfully created.' }
+        format.json { render :show, status: :created, location: @nasdaq_instrument }
+      else
+        format.html { render :new }
+        format.json { render json: @nasdaq_instrument.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /nasdaq_instruments/1
+  # PATCH/PUT /nasdaq_instruments/1.json
+  def update
+    respond_to do |format|
+      if @nasdaq_instrument.update(nasdaq_instrument_params)
+        format.html { redirect_to @nasdaq_instrument, notice: 'nasdaq_instrument was successfully updated.' }
+        format.json { render :show, status: :ok, location: @nasdaq_instrument }
+      else
+        format.html { render :edit }
+        format.json { render json: @nasdaq_instrument.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /nasdaq_instruments/1
+  # DELETE /nasdaq_instruments/1.json
+  def destroy
+    @nasdaq_instrument.destroy
+    respond_to do |format|
+      format.html { redirect_to nasdaq_instruments_url, notice: 'nasdaq_instrument was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def readCsv
+    CsvReader.read_nasdaq_instruments_from_symbol_files
+    redirect_to nasdaq_instruments_path
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_nasdaq_instruments
+    @nasdaq_instruments = NasdaqInstrument.
+        where('name like ?', "%#{params[:search]}%").
+        paginate(:page => params[:page], :per_page => 50).
+        order('name')
+  end
+
+  def set_nasdaq_instrument
+    @nasdaq_instrument = NasdaqInstrument.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def nasdaq_instrument_params
+    params.require(:nasdaq_instrument).permit(:name, :current_price, :abb)
+  end
+end

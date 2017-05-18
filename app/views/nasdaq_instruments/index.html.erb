@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Nasdaq Instruments (<%= @nasdaq_instruments.count %>)</h1>
+
+<div>
+  <%= form_tag nasdaq_instruments_path, :method => 'get' do %>
+      <p>
+        Name: <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", class:'btn-xs btn-primary'%>
+      </p>
+  <% end %>
+</div>
+
+<%= will_paginate @nasdaq_instruments %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Symbol</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nasdaq_instruments.each do |nasdaq_instrument| %>
+      <tr>
+        <td><%= link_to nasdaq_instrument.name, nasdaq_instrument %></td>
+        <td><%= nasdaq_instrument.symbol %></td>
+        <td><%= link_to 'Destroy', nasdaq_instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @nasdaq_instruments %>
+
+<br>
+
+<%= link_to 'New Nasdaq Instrument', new_nasdaq_instrument_path %>
+<p>
+  <%= button_to 'Load from CSV', action: 'readCsv' %>
+</p>
+

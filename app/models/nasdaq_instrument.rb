@@ -1,3 +1,3 @@
-class Stock < ApplicationRecord
+class NasdaqInstrument < ApplicationRecord
   validates :symbol, :presence => true, :uniqueness => true
 end

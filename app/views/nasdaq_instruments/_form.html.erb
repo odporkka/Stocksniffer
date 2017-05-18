@@ -1,10 +1,10 @@
-<%= form_for(stock) do |f| %>
-  <% if stock.errors.any? %>
+<%= form_for(nasdaq_instrument) do |f| %>
+  <% if nasdaq_instrument.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+      <h2><%= pluralize(nasdaq_instrument.errors.count, "error") %> prohibited this nasdaq_instrument from being saved:</h2>
 
       <ul>
-      <% stock.errors.full_messages.each do |message| %>
+      <% nasdaq_instrument.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
