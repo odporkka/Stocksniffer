@@ -7,3 +7,6 @@ Goal is to expand scraping more for more in-depth analysis per stock. (And maybe
 
 * Heroku: https://stocksniffer.herokuapp.com/
 * Travis: [![Build Status](https://travis-ci.org/odporkka/stocksniffer.png)](https://travis-ci.org/odporkka/stocksniffer)
+
+Ruby version 2.4.0  
+Rails version 5.0.3
