@@ -19,21 +19,22 @@ class AlphaVantageApi
   def self.weekly_time_series(symbol)
     url = "http://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=#{symbol}&apikey=#{self.key}"
     response = HTTParty.get "#{url}"
-
+    File.write(Rails.root+'tmp/last_alpha_vantage_response.html', response)
     array = response['Weekly Time Series']
     data = array.collect { |week| [week[0], week[1]['4. close']] }
     return data
   end
 
-  def self.ten_day_time_series(symbol)
-    url = "http://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{symbol}&apikey=#{self.key}"
-    response = HTTParty.get "#{url}"
+  # def self.ten_day_time_series(symbol)
+  #   url = "http://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{symbol}&apikey=#{self.key}"
+  #   response = HTTParty.get "#{url}"
+  #
+  #   array = response['Time Series (Daily)']
+  #   data = array.collect { |day| [day[0], day[1]['4. close']] }
+  #   return data
+  # end
 
-    array = response['Time Series (Daily)']
-    data = array.collect { |day| [day[0], day[1]['4. close']] }
-    return data
-  end
-
+  private
   def self.key
     "ZMEQ"
   end
