@@ -5,15 +5,20 @@ class AlphaVantageApi
   end
 
   def self.three_month_weekly(symbol)
-    data =  self.fetch_weekly(symbol)
-    return data[0, 13]
+    data = self.fetch_weekly(symbol)
+    if data && data.is_a?(Array) && data.size >= 13
+      return data[0, 13]
+    end
   end
 
   def self.three_month_dev_pr(symbol)
-      data = self.three_month_weekly(symbol)
+    if data = self.three_month_weekly(symbol)
       sub = data[0][1].to_f - data[12][1].to_f
       pr = sub / data[12][1].to_f * 100
       return pr.round(2)
+    else
+      return 0.0
+    end
   end
 
   def self.weekly_time_series(symbol)

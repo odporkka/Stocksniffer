@@ -17,6 +17,7 @@
 /tmp
 .idea*
 .byebug_history
+/coverage/assets/*
 
 #Ignore OS specific files
 .DS_Store

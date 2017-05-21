@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Disable caching for now. F's up testing api calls with caching
+  config.cache_store = :null_store
 end

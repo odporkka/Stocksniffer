@@ -67,5 +67,6 @@ group :test do
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'webmock'
+  gem 'poltergeist'
 end
 

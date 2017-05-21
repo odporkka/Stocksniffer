@@ -14,10 +14,6 @@ class XetraInstrumentsController < ApplicationController
   def show
   end
 
-  def search
-    redirect_to xetra_instruments_path
-  end
-
   # GET /xetra_instruments/new
   def new
     @xetra_instrument = XetraInstrument.new

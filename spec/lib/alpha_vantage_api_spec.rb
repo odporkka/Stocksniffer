@@ -1,11 +1,13 @@
 require 'rails_helper'
 
-describe "Alpha Vantage API" do
+describe "lib/ Alpha Vantage API", type: :request do
   before :each do
     stub_request(:get, /.*/).to_return(body: canned_answer.to_json, headers: { 'Content-Type' => "text/json" })
   end
 
   it "Weekly data json gets parsed right" do
+    stub_request(:get, /.*/).to_return(body: canned_answer.to_json, headers: { 'Content-Type' => "text/json" })
+
     array = AlphaVantageApi.weekly_time_series("TSLA")
 
     expect(array.size).to eq(15)
@@ -30,7 +32,7 @@ describe "Alpha Vantage API" do
   end
 
   it "Three month weekly percentage works right" do
-    pr = AlphaVantageApi.three_month_dev_pr("sumbol")
+    pr = AlphaVantageApi.three_month_dev_pr("symbol")
 
     expect(pr).to eq(21.81)
   end

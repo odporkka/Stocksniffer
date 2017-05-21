@@ -2,7 +2,7 @@ require 'csv'
 
 class CsvReader
 
-  def self.read_nasdaq_instruments_from_symbol_files
+  def self.read_nasdaq_instruments
     CSV.foreach(self.parse_headers(self.nasdaq_file, self.nasdaq_headers), :headers => true) do |row|
       begin
         NasdaqInstrument.create!(row.to_hash.slice("name", "symbol"))
@@ -52,6 +52,7 @@ class CsvReader
      "ISIN"=>"isin"}
   end
 
+  # :nocov:
   def self.nasdaq_file
     Rails.root+"db/symbol_lists/nasdaq_list.csv"
   end
@@ -59,4 +60,5 @@ class CsvReader
   def self.xetra_file
     Rails.root+"db/symbol_lists/xetra_instrument_list.csv"
   end
+  # :nocov:
 end

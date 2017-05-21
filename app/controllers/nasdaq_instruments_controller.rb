@@ -18,10 +18,6 @@ class NasdaqInstrumentsController < ApplicationController
     @threemonthpr = AlphaVantageApi.three_month_dev_pr(@nasdaq_instrument.symbol)
   end
 
-  def search
-    redirect_to nasdaq_instruments_path
-  end
-
   # GET /nasdaq_instruments/new
   def new
     @nasdaq_instrument = NasdaqInstrument.new
@@ -72,7 +68,7 @@ class NasdaqInstrumentsController < ApplicationController
   end
 
   def readCsv
-    CsvReader.read_nasdaq_instruments_from_symbol_files
+    CsvReader.read_nasdaq_instruments
     redirect_to nasdaq_instruments_path
   end
 
@@ -91,6 +87,6 @@ class NasdaqInstrumentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def nasdaq_instrument_params
-    params.require(:nasdaq_instrument).permit(:name, :current_price, :abb)
+    params.require(:nasdaq_instrument).permit(:name, :symbol)
   end
 end

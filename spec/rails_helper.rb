@@ -1,16 +1,20 @@
 require 'simplecov'
 SimpleCov.coverage_dir 'public/coverage'
 SimpleCov.start('rails')
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
-require 'capybara/rspec'
-require 'webmock/rspec'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
+
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'rspec/rails'
+
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'rspec/rails'
+require 'spec_helper'
+require 'webmock/rspec'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -59,4 +63,25 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  #Allow localhost for Webmock
+  WebMock.disable_net_connect!(allow_localhost: true)
+
+  #Trying poltergeist since selenium bugged
+  Capybara.javascript_driver = :poltergeist
+
+  # Allows javascript tests to use same instance of Active Records as rest tests
+  class ActiveRecord::Base
+    mattr_accessor :shared_connection
+    @@shared_connection = nil
+
+    def self.connection
+      @@shared_connection || retrieve_connection
+    end
+  end
+
+  # Forces all threads to share the same connection. This works on
+  # Capybara because it starts the web server in a thread.
+  ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+
 end
