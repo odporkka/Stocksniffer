@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "XETRA pages" do
 
@@ -13,7 +13,7 @@ describe "XETRA pages" do
       # Csv reader is tested at spec/lib/csv_reader_spec.rb
       allow(CsvReader).to receive(:read_xetra_instruments)
       visit xetra_instruments_path
-      click_button('Load from CSV')
+      click_button("Load from CSV")
       expect(page).to have_content("Xetra Instruments (0)")
     end
 
@@ -39,8 +39,8 @@ describe "XETRA pages" do
       it "lets user search instruments" do
         FactoryGirl.create(:xetra_instrument, name: "Search Inc.", isin: "SRCH")
         visit xetra_instruments_path
-        fill_in('search', with: 'Search')
-        click_button('Search')
+        fill_in("search", with: "Search")
+        click_button("Search")
         expect(page).to have_content("Search Inc.")
         expect(page).to_not have_content("Test Inc.")
       end
@@ -90,15 +90,15 @@ describe "XETRA pages" do
     end
 
     it "should allow user to add new valid instrument" do
-      fill_in('xetra_instrument[name]', with: 'Test Instrument Corp')
-      fill_in('xetra_instrument[isin]', with: 'TIC')
-      fill_in('xetra_instrument[instrument_type]', with: 'Test Instrument Corp')
-      click_button('Create Xetra instrument')
+      fill_in("xetra_instrument[name]", with: "Test Instrument Corp")
+      fill_in("xetra_instrument[isin]", with: "TIC")
+      fill_in("xetra_instrument[instrument_type]", with: "Test Instrument Corp")
+      click_button("Create Xetra instrument")
       expect(XetraInstrument.count).to eq(1)
     end
 
     it "should discard invalid instrument" do
-      click_button('Create Xetra instrument')
+      click_button("Create Xetra instrument")
       expect(XetraInstrument.count).to eq(0)
       expect(page).to have_content("error")
     end
@@ -112,23 +112,23 @@ describe "XETRA pages" do
 
     it "should show page for editing instrument" do
       expect(page).to have_content("Editing Xetra instrument")
-      expect(find_field('xetra_instrument[name]').value).to eq("Test Inc.")
-      expect(find_field('xetra_instrument[isin]').value).to eq("TST-123")
-      expect(find_field('xetra_instrument[instrument_type]').value).to eq("Equity")
+      expect(find_field("xetra_instrument[name]").value).to eq("Test Inc.")
+      expect(find_field("xetra_instrument[isin]").value).to eq("TST-123")
+      expect(find_field("xetra_instrument[instrument_type]").value).to eq("Equity")
     end
 
     it "should allow user to edit valid instrument" do
-      fill_in('xetra_instrument[name]', with: 'Test Corp')
-      fill_in('xetra_instrument[isin]', with: 'TST-SHT')
-      fill_in('xetra_instrument[instrument_type]', with: 'Bond')
-      click_button('Update Xetra instrument')
+      fill_in("xetra_instrument[name]", with: "Test Corp")
+      fill_in("xetra_instrument[isin]", with: "TST-SHT")
+      fill_in("xetra_instrument[instrument_type]", with: "Bond")
+      click_button("Update Xetra instrument")
       expect(XetraInstrument.count).to eq(1)
       expect(XetraInstrument.first.name).to eq("Test Corp")
     end
 
     it "should discard invalid instrument" do
-      fill_in('xetra_instrument[isin]', with: '')
-      click_button('Update Xetra instrument')
+      fill_in("xetra_instrument[isin]", with: "")
+      click_button("Update Xetra instrument")
       expect(XetraInstrument.count).to eq(1)
       expect(page).to have_content("error")
     end

@@ -1,12 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "lib/ Alpha Vantage API", type: :request do
   before :each do
-    stub_request(:get, /.*/).to_return(body: canned_answer.to_json, headers: { 'Content-Type' => "text/json" })
+    stub_request(:get, /.*/).to_return(body: canned_answer.to_json, headers: { "Content-Type" => "text/json" })
   end
 
   it "Weekly data json gets parsed right" do
-    stub_request(:get, /.*/).to_return(body: canned_answer.to_json, headers: { 'Content-Type' => "text/json" })
+    stub_request(:get, /.*/).to_return(body: canned_answer.to_json, headers: { "Content-Type" => "text/json" })
 
     array = AlphaVantageApi.weekly_time_series("TSLA")
 

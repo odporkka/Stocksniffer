@@ -1,4 +1,4 @@
-require 'csv_reader'
+require "csv_reader"
 
 class XetraInstrumentsController < ApplicationController
   before_action :set_xetra_instrument, only: [:show, :edit, :update, :destroy]
@@ -30,7 +30,7 @@ class XetraInstrumentsController < ApplicationController
 
     respond_to do |format|
       if @xetra_instrument.save
-        format.html { redirect_to @xetra_instrument, notice: 'Xetra instrument was successfully created.' }
+        format.html { redirect_to @xetra_instrument, notice: "Xetra instrument was successfully created." }
         format.json { render :show, status: :created, location: @xetra_instrument }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class XetraInstrumentsController < ApplicationController
   def update
     respond_to do |format|
       if @xetra_instrument.update(xetra_instrument_params)
-        format.html { redirect_to @xetra_instrument, notice: 'Xetra instrument was successfully updated.' }
+        format.html { redirect_to @xetra_instrument, notice: "Xetra instrument was successfully updated." }
         format.json { render :show, status: :ok, location: @xetra_instrument }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class XetraInstrumentsController < ApplicationController
   def destroy
     @xetra_instrument.destroy
     respond_to do |format|
-      format.html { redirect_to xetra_instruments_url, notice: 'Xetra instrument was successfully destroyed.' }
+      format.html { redirect_to xetra_instruments_url, notice: "Xetra instrument was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -72,9 +72,9 @@ class XetraInstrumentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_instruments
       @xetra_instruments = XetraInstrument.
-          where('name like ?', "%#{params[:search]}%").
+          where("name like ?", "%#{params[:search]}%").
           paginate(:page => params[:page], :per_page => 50).
-          order('name')
+          order("name")
     end
 
     def set_xetra_instrument

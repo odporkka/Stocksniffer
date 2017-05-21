@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "NASDAQ pages" do
   before :each do
@@ -16,7 +16,7 @@ describe "NASDAQ pages" do
       # Csv reader is tested at spec/lib/csv_reader_spec.rb
       allow(CsvReader).to receive(:read_nasdaq_instruments)
       visit nasdaq_instruments_path
-      click_button('Load from CSV')
+      click_button("Load from CSV")
       expect(page).to have_content("Nasdaq Instruments (0)")
     end
 
@@ -42,8 +42,8 @@ describe "NASDAQ pages" do
       it "lets user search instruments" do
         FactoryGirl.create(:nasdaq_instrument, name: "Search Inc.", symbol: "SRCH")
         visit nasdaq_instruments_path
-        fill_in('search', with: 'Search')
-        click_button('Search')
+        fill_in("search", with: "Search")
+        click_button("Search")
         expect(page).to have_content("Search Inc.")
         expect(page).to_not have_content("Test Inc.")
       end
@@ -92,14 +92,14 @@ describe "NASDAQ pages" do
     end
 
     it "should allow user to add new valid instrument" do
-      fill_in('nasdaq_instrument[name]', with: 'Test Instrument Corp')
-      fill_in('nasdaq_instrument[symbol]', with: 'TIC')
-      click_button('Create Nasdaq instrument')
+      fill_in("nasdaq_instrument[name]", with: "Test Instrument Corp")
+      fill_in("nasdaq_instrument[symbol]", with: "TIC")
+      click_button("Create Nasdaq instrument")
       expect(NasdaqInstrument.count).to eq(1)
     end
 
     it "should discard invalid instrument" do
-      click_button('Create Nasdaq instrument')
+      click_button("Create Nasdaq instrument")
       expect(NasdaqInstrument.count).to eq(0)
       expect(page).to have_content("error")
     end
@@ -113,21 +113,21 @@ describe "NASDAQ pages" do
 
     it "should show page for editing instrument" do
       expect(page).to have_content("Editing Nasdaq instrument")
-      expect(find_field('nasdaq_instrument[name]').value).to eq("Test Inc.")
-      expect(find_field('nasdaq_instrument[symbol]').value).to eq("TST")
+      expect(find_field("nasdaq_instrument[name]").value).to eq("Test Inc.")
+      expect(find_field("nasdaq_instrument[symbol]").value).to eq("TST")
     end
 
     it "should allow user to edit valid instrument" do
-      fill_in('nasdaq_instrument[name]', with: 'Test Corp')
-      fill_in('nasdaq_instrument[symbol]', with: 'TSTNG')
-      click_button('Update Nasdaq instrument')
+      fill_in("nasdaq_instrument[name]", with: "Test Corp")
+      fill_in("nasdaq_instrument[symbol]", with: "TSTNG")
+      click_button("Update Nasdaq instrument")
       expect(NasdaqInstrument.count).to eq(1)
       expect(NasdaqInstrument.first.name).to eq("Test Corp")
     end
 
     it "should discard invalid instrument" do
-      fill_in('nasdaq_instrument[symbol]', with: '')
-      click_button('Update Nasdaq instrument')
+      fill_in("nasdaq_instrument[symbol]", with: "")
+      click_button("Update Nasdaq instrument")
       expect(NasdaqInstrument.count).to eq(1)
       expect(page).to have_content("error")
     end

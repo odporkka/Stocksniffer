@@ -1,20 +1,20 @@
-require 'simplecov'
-SimpleCov.coverage_dir 'public/coverage'
-SimpleCov.start('rails')
+require "simplecov"
+SimpleCov.coverage_dir "public/coverage"
+SimpleCov.start("rails")
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../../config/environment", __FILE__)
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 # Add additional requires below this line. Rails is not loaded until this point!
-require 'rspec/rails'
-require 'spec_helper'
-require 'webmock/rspec'
-require 'capybara/rspec'
-require 'capybara/poltergeist'
+require "rspec/rails"
+require "spec_helper"
+require "webmock/rspec"
+require "capybara/rspec"
+require "capybara/poltergeist"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

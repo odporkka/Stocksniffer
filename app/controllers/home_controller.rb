@@ -1,4 +1,4 @@
-require 'google_finance_scraper'
+require "google_finance_scraper"
 
 class HomeController < ApplicationController
   def index

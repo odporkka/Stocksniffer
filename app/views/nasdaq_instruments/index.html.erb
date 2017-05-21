@@ -3,10 +3,10 @@
 <h1>Nasdaq Instruments (<%= @nasdaq_instruments.count %>)</h1>
 
 <div>
-  <%= form_tag nasdaq_instruments_path, :method => 'get' do %>
+  <%= form_tag nasdaq_instruments_path, :method => "get" do %>
       <p>
         Name: <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", class:'btn-xs btn-primary'%>
+        <%= submit_tag "Search", class:"btn-xs btn-primary"%>
       </p>
   <% end %>
 </div>
@@ -27,7 +27,7 @@
       <tr>
         <td><%= link_to nasdaq_instrument.name, nasdaq_instrument %></td>
         <td><%= nasdaq_instrument.symbol %></td>
-        <td><%= link_to 'Destroy', nasdaq_instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Destroy", nasdaq_instrument, method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -37,8 +37,8 @@
 
 <br>
 
-<%= link_to 'New Nasdaq Instrument', new_nasdaq_instrument_path %>
+<%= link_to "New Nasdaq Instrument", new_nasdaq_instrument_path %>
 <p>
-  <%= button_to 'Load from CSV', action: 'readCsv' %>
+  <%= button_to "Load from CSV", action: "readCsv" %>
 </p>
 

@@ -1,5 +1,5 @@
-require 'alpha_vantage_api'
-require 'csv_reader'
+require "alpha_vantage_api"
+require "csv_reader"
 
 class NasdaqInstrumentsController < ApplicationController
   before_action :set_nasdaq_instrument, only: [:show, :edit, :update, :destroy]
@@ -34,7 +34,7 @@ class NasdaqInstrumentsController < ApplicationController
 
     respond_to do |format|
       if @nasdaq_instrument.save
-        format.html { redirect_to @nasdaq_instrument, notice: 'nasdaq_instrument was successfully created.' }
+        format.html { redirect_to @nasdaq_instrument, notice: "nasdaq_instrument was successfully created." }
         format.json { render :show, status: :created, location: @nasdaq_instrument }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class NasdaqInstrumentsController < ApplicationController
   def update
     respond_to do |format|
       if @nasdaq_instrument.update(nasdaq_instrument_params)
-        format.html { redirect_to @nasdaq_instrument, notice: 'nasdaq_instrument was successfully updated.' }
+        format.html { redirect_to @nasdaq_instrument, notice: "nasdaq_instrument was successfully updated." }
         format.json { render :show, status: :ok, location: @nasdaq_instrument }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class NasdaqInstrumentsController < ApplicationController
   def destroy
     @nasdaq_instrument.destroy
     respond_to do |format|
-      format.html { redirect_to nasdaq_instruments_url, notice: 'nasdaq_instrument was successfully destroyed.' }
+      format.html { redirect_to nasdaq_instruments_url, notice: "nasdaq_instrument was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -76,9 +76,9 @@ class NasdaqInstrumentsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_nasdaq_instruments
     @nasdaq_instruments = NasdaqInstrument.
-        where('name like ?', "%#{params[:search]}%").
+        where("name like ?", "%#{params[:search]}%").
         paginate(:page => params[:page], :per_page => 50).
-        order('name')
+        order("name")
   end
 
   def set_nasdaq_instrument
