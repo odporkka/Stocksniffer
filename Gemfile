@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'coveralls', require: false
 end
 
 group :development do
