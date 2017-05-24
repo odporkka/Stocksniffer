@@ -8,6 +8,7 @@ Goal is to expand scraping more for more in-depth analysis per stock. (And maybe
 * Heroku: https://stocksniffer.herokuapp.com/
 * Travis: [![Build Status](https://travis-ci.org/odporkka/stocksniffer.png)](https://travis-ci.org/odporkka/stocksniffer)
 * Coveralls: [![Coverage Status](https://coveralls.io/repos/github/odporkka/stocksniffer/badge.svg?branch=master)](https://coveralls.io/github/odporkka/stocksniffer?branch=master)
+* Data model: http://yuml.me/edit/c93b89ee
 
 Ruby version 2.4.0  
 Rails version 5.0.3
