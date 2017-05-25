@@ -1,12 +1,8 @@
-Symbol lists downloaded manually from:
-http://www.eoddata.com/symbols.aspx
+Move these CSV-files to db/symbol_lists/
 
-Username: odeprox  pass: qwe123 e-mail: otto.porkka@luukku.com
-
-Also http://www.nasdaq.com/screening/company-list.aspx might be better
+NASDAQ:
+    rename to nasdaq_list.csv:
+        http://www.nasdaq.com/screening/company-list.aspx
 
 XETRA:
-
-http://xetra.com/xetra-en/allTradableInstruments.csv
-remove extra lines at start with vim etc.
-cut -f2-3,36 -d ';' allTradableInstruments.csv > xetra_instrument_list.csv
+    http://xetra.com/xetra-en/allTradableInstruments.csv

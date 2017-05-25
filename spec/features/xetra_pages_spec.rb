@@ -19,25 +19,26 @@ describe "XETRA pages" do
 
     describe "when there is instruments" do
       let!(:instrument1) { FactoryGirl.create(:xetra_instrument) }
-      let!(:instrument2) { FactoryGirl.create(:xetra_instrument, isin: "TST-124") }
+      let!(:instrument2) { FactoryGirl.create(:xetra_instrument, isin: "TST-124", symbol:"TST2") }
 
       it "lists them" do
         visit xetra_instruments_path
         expect(page).to have_content("Xetra Instruments (2)")
         expect(page).to have_content("Test Inc.")
-        expect(page).to have_content("TST-123")
-        expect(page).to have_content("TST-124")
+        expect(page).to have_content("TST")
+        expect(page).to have_content("TST2")
       end
 
       it "allows user to navigate to instrument page" do
         visit xetra_instruments_path
         first(:link, "Test Inc.").click
         expect(page).to have_content("Name: Test Inc.")
+        expect(page).to have_content("Symbol: TST")
         expect(page).to have_content("Isin: TST-123")
       end
 
       it "lets user search instruments" do
-        FactoryGirl.create(:xetra_instrument, name: "Search Inc.", isin: "SRCH")
+        FactoryGirl.create(:xetra_instrument, name: "Search Inc.", symbol: "SRCH")
         visit xetra_instruments_path
         fill_in("search", with: "Search")
         click_button("Search")
@@ -57,12 +58,12 @@ describe "XETRA pages" do
         XetraInstrument.delete_all
         i = 1
         while i <= 51 do
-          FactoryGirl.create(:xetra_instrument, name: "Test Inc.", isin: "TST-"+(i).to_s)
+          FactoryGirl.create(:xetra_instrument, name: "Test Inc.", symbol: "TST"+(i).to_s)
           i += 1
         end
         visit xetra_instruments_path
         expect(page).to have_content("Previous 1 2 Next")
-        expect(page).to_not have_content("TST-51")
+        expect(page).to_not have_content("TST51")
       end
     end
   end
@@ -73,8 +74,8 @@ describe "XETRA pages" do
     it "should show attributes of instrument" do
       visit xetra_instrument_path(1)
       expect(page).to have_content("Name: Test Inc.")
+      expect(page).to have_content("Symbol: TST")
       expect(page).to have_content("Isin: TST-123")
-      expect(page).to have_content("Type: Equity")
     end
   end
 
@@ -86,13 +87,14 @@ describe "XETRA pages" do
     it "should show page for adding new instrument" do
       expect(page).to have_content("New Xetra Instrument")
       expect(page).to have_content("Name")
+      expect(page).to have_content("Symbol")
       expect(page).to have_content("Isin")
     end
 
     it "should allow user to add new valid instrument" do
       fill_in("xetra_instrument[name]", with: "Test Instrument Corp")
-      fill_in("xetra_instrument[isin]", with: "TIC")
-      fill_in("xetra_instrument[instrument_type]", with: "Test Instrument Corp")
+      fill_in("xetra_instrument[symbol]", with: "TIC")
+      fill_in("xetra_instrument[isin]", with: "TIC123")
       click_button("Create Xetra instrument")
       expect(XetraInstrument.count).to eq(1)
     end
@@ -113,21 +115,21 @@ describe "XETRA pages" do
     it "should show page for editing instrument" do
       expect(page).to have_content("Editing Xetra instrument")
       expect(find_field("xetra_instrument[name]").value).to eq("Test Inc.")
+      expect(find_field("xetra_instrument[symbol]").value).to eq("TST")
       expect(find_field("xetra_instrument[isin]").value).to eq("TST-123")
-      expect(find_field("xetra_instrument[instrument_type]").value).to eq("Equity")
     end
 
     it "should allow user to edit valid instrument" do
       fill_in("xetra_instrument[name]", with: "Test Corp")
+      fill_in("xetra_instrument[symbol]", with: "TST")
       fill_in("xetra_instrument[isin]", with: "TST-SHT")
-      fill_in("xetra_instrument[instrument_type]", with: "Bond")
       click_button("Update Xetra instrument")
       expect(XetraInstrument.count).to eq(1)
       expect(XetraInstrument.first.name).to eq("Test Corp")
     end
 
     it "should discard invalid instrument" do
-      fill_in("xetra_instrument[isin]", with: "")
+      fill_in("xetra_instrument[symbol]", with: "")
       click_button("Update Xetra instrument")
       expect(XetraInstrument.count).to eq(1)
       expect(page).to have_content("error")

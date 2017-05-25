@@ -83,6 +83,6 @@ class XetraInstrumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def xetra_instrument_params
-      params.require(:xetra_instrument).permit(:name, :isin, :type)
+      params.require(:xetra_instrument).permit(:name, :symbol, :isin)
     end
 end

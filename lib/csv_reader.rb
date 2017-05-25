@@ -1,4 +1,4 @@
-require 'csv'
+require "csv"
 
 class CsvReader
 
@@ -14,11 +14,11 @@ class CsvReader
   end
 
   def self.read_xetra_instruments
+    self.edit_xetra_all_instruments_file
     CSV.foreach(self.parse_headers(self.xetra_file, self.xetra_headers),
-                :col_sep => (';'),
                 :headers => true) do |row|
       begin
-        XetraInstrument.create!(row.to_hash)
+        XetraInstrument.create!(row.to_hash.slice("name", "isin", "symbol"))
       rescue Exception => e
         puts "Error #{e}"
         next
@@ -47,9 +47,23 @@ class CsvReader
   end
 
   def self.xetra_headers
-    {"Instrument Type" => "instrument_type",
-     "Instrument" => "name",
-     "ISIN"=>"isin"}
+    {"Instrument" => "name",
+     "ISIN"=>"isin",
+     "Mnemonic"=>"symbol"}
+  end
+
+  def self.edit_xetra_all_instruments_file
+    File.delete(self.xetra_file)if  File.exist?(self.xetra_file)
+    CSV.open(self.xetra_file, "w") do |csv|
+      CSV.foreach(self.xetra_all_instruments,{:encoding => "iso-8859-1",
+                                              :col_sep => ";",
+                                              # ignore quotes
+                                              :quote_char => "|"}) do |org_row|
+        if org_row[6].eql?("XETR") || org_row[6].eql?("MIC Code")
+          csv << [org_row[1], org_row[2], org_row[5]]
+        end
+      end
+    end
   end
 
   # :nocov:
@@ -59,6 +73,10 @@ class CsvReader
 
   def self.xetra_file
     Rails.root+"db/symbol_lists/xetra_instrument_list.csv"
+  end
+
+  def self.xetra_all_instruments
+    Rails.root+"db/symbol_lists/allTradableInstruments.csv"
   end
   # :nocov:
 end
