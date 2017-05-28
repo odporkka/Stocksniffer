@@ -6,7 +6,7 @@ describe "lib/ Google Finance scraper" do
   end
 
   it "Should scrape attributes right" do
-    data = GoogleFinanceScraper.fetch("AMD")
+    data = GoogleFinanceScraper.fetch("NASDAQ","AMD")
 
     expect(data["name"]).to eq("Advanced Micro Devices, Inc.")
     expect(data["symbol"]).to eq("AMD")

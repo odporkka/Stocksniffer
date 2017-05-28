@@ -1,7 +1,7 @@
 class GoogleFinanceScraper
 
-  def self.fetch(symbol)
-    page = HTTParty.get self.url(symbol)
+  def self.fetch(exchange, symbol)
+    page = HTTParty.get self.url(exchange, symbol)
     parse_page = Nokogiri::HTML(page)
 
     data = {}
@@ -22,7 +22,7 @@ class GoogleFinanceScraper
   end
 
   private
-  def self.url(symbol)
-    "https://www.google.com/finance?q=#{symbol}"
+  def self.url(exchange, symbol)
+    "https://www.google.com/finance?q=#{exchange}%3A#{symbol}"
   end
 end

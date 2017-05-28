@@ -6,6 +6,7 @@
   <%= form_tag root_path do %>
       <p>
         Symbol: <%= text_field_tag "search", "AAPL" %>
+        <%= select_tag("exchange", options_from_collection_for_select(@exchanges, :last, :first)) %>
         <%= submit_tag "Search", class:"btn-xs btn-primary"%>
       </p>
   <% end %>
@@ -22,7 +23,7 @@
   Microsoft Corporation - MSFT<br>
   Tesla Inc. - TSLA<br>
   ... <br>
-  (https://www.google.com/finance?q=#{symbol}) <br>
+  (https://www.google.com/finance?q=#{exchange}%3A#{symbol}) <br>
   <br>
   <i>Latest fetch as HTML at Rails.root("tmp/latest_search.html")</i>
 </div>
