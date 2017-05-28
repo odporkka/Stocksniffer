@@ -3,6 +3,7 @@ class CreateNasdaqInstruments < ActiveRecord::Migration[5.0]
     create_table :nasdaq_instruments do |t|
       t.string :name
       t.string :symbol
+      t.string :exchange
 
       t.timestamps
     end

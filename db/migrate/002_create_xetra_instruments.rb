@@ -4,6 +4,7 @@ class CreateXetraInstruments < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :isin
       t.string :symbol
+      t.string :exchange
 
       t.timestamps
     end

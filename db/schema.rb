@@ -10,11 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517084220) do
+ActiveRecord::Schema.define(version: 3) do
+
+  create_table "google_finance_objects", force: :cascade do |t|
+    t.string   "owner_instrument_type"
+    t.integer  "owner_instrument_id"
+    t.integer  "open"
+    t.integer  "mktcap"
+    t.integer  "shares"
+    t.integer  "pe"
+    t.integer  "eps"
+    t.integer  "beta"
+    t.float    "inst_own"
+    t.string   "range"
+    t.string   "one_year"
+    t.string   "vol_per_avg"
+    t.string   "div_per_yield"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["owner_instrument_type", "owner_instrument_id"], name: "index_owner_instrument_on_google_finance_object"
+  end
 
   create_table "nasdaq_instruments", force: :cascade do |t|
     t.string   "name"
     t.string   "symbol"
+    t.string   "exchange"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170517084220) do
     t.string   "name"
     t.string   "isin"
     t.string   "symbol"
+    t.string   "exchange"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

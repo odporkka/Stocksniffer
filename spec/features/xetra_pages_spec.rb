@@ -32,9 +32,9 @@ describe "XETRA pages" do
       it "allows user to navigate to instrument page" do
         visit xetra_instruments_path
         first(:link, "Test Inc.").click
-        expect(page).to have_content("Name: Test Inc.")
+        expect(page).to have_content("Test Inc.")
         expect(page).to have_content("Symbol: TST")
-        expect(page).to have_content("Isin: TST-123")
+        expect(page).to have_content("ISIN: TST-123")
       end
 
       it "lets user search instruments" do
@@ -73,9 +73,9 @@ describe "XETRA pages" do
 
     it "should show attributes of instrument" do
       visit xetra_instrument_path(1)
-      expect(page).to have_content("Name: Test Inc.")
+      expect(page).to have_content("Test Inc.")
       expect(page).to have_content("Symbol: TST")
-      expect(page).to have_content("Isin: TST-123")
+      expect(page).to have_content("ISIN: TST-123")
     end
   end
 

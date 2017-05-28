@@ -35,7 +35,7 @@ describe "NASDAQ pages" do
       it "allows user to navigate to instrument page" do
         visit nasdaq_instruments_path
         first(:link, "Test Inc.").click
-        expect(page).to have_content("Name: Test Inc.")
+        expect(page).to have_content("Test Inc.")
         expect(page).to have_content("Symbol: TST")
       end
 
@@ -75,7 +75,7 @@ describe "NASDAQ pages" do
 
     it "should show attributes of instrument" do
       visit nasdaq_instrument_path(1)
-      expect(page).to have_content("Name: Test Inc.")
+      expect(page).to have_content("Test Inc.")
       expect(page).to have_content("Symbol: TST")
     end
   end

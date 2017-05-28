@@ -1,19 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @xetra_instrument.name %>
-</p>
+<div class="row">
+  <h2><%= @xetra_instrument.name %></h2>
+</div>
 
-<p>
-  <strong>Symbol:</strong>
-  <%= @xetra_instrument.symbol %>
-</p>
-
-<p>
-  <strong>Isin:</strong>
-  <%= @xetra_instrument.isin %>
-</p>
+<div class="row">
+  <div class="col col-sm-4">
+    <strong>Exchange:</strong>
+    XETRA
+    </br>
+    <strong>Symbol:</strong>
+    <%= @xetra_instrument.symbol %>
+    </br>
+    <strong>ISIN:</strong>
+    <%= @xetra_instrument.isin %>
+    </br>
+  </div>
+  <div class="col col-sm-4">
+    <strong>Last trading day open:</strong>
+    <%= @gfc.open %>
+    </br>
+    <strong>Market cap:</strong>
+    <%= @gfc.mktcap %>
+    </br>
+    <strong>52 week movement:</strong>
+    <%= @gfc.one_year %>
+  </div>
+  <div class="col col-sm-4">
+    <strong>P/E:</strong>
+    <%= @gfc.pe %>
+    </br>
+    <strong>Shares:</strong>
+    <%= @gfc.shares %>
+    </br>
+    <strong>Earnings per share:</strong>
+    <%= @gfc.eps %>
+  </div>
+</div>
 
 <%= link_to "Edit", edit_xetra_instrument_path(@xetra_instrument) %> |
 <%= link_to "Back", xetra_instruments_path %>

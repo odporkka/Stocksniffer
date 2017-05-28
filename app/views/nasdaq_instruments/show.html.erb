@@ -1,22 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @nasdaq_instrument.name %>
-  </br>
-  <strong>Symbol:</strong>
-  <%= @nasdaq_instrument.symbol%>
-  </br>
-  <strong>3 month movement:</strong>
-  <% if @threemonthpr >= 0 %>
-      <span style="color:green"><%= @threemonthpr %> %</span>
-  <% else %>
-      <span style="color:red"><%= @threemonthpr %> %</span>
-  <% end %>
-</p>
+<div class="row">
+  <h2><%= @nasdaq_instrument.name %></h2>
+</div>
 
-<%= line_chart @weeks, title:"Historical value development", library: {backgroundColor: "#eee"} %>
-<%= line_chart @threemonths, title:"3 month value development", library: {backgroundColor: "#eee"}%>
+<div class="row">
+  <div class="col col-sm-4">
+    <strong>Exchange:</strong>
+    NASDAQ
+    </br>
+    <strong>Symbol:</strong>
+    <%= @nasdaq_instrument.symbol %>
+    </br>
+    <strong>3 month movement:</strong>
+    <% if @threemonthpr >= 0 %>
+        <span style="color:green"><%= @threemonthpr %> %</span>
+    <% else %>
+        <span style="color:red"><%= @threemonthpr %> %</span>
+    <% end %>
+  </div>
+  <div class="col col-sm-4">
+    <strong>Last trading day open:</strong>
+    <%= @gfc.open %>
+    </br>
+    <strong>Market cap:</strong>
+    <%= @gfc.mktcap %>
+    </br>
+    <strong>52 week movement:</strong>
+    <%= @gfc.one_year %>
+  </div>
+  <div class="col col-sm-4">
+    <strong>P/E:</strong>
+    <%= @gfc.pe %>
+    </br>
+    <strong>Shares:</strong>
+    <%= @gfc.shares %>
+    </br>
+    <strong>Earnings per share:</strong>
+    <%= @gfc.eps %>
+  </div>
+</div>
+
+
+<%= line_chart @weeks, title: "Historical value development", library: {backgroundColor: "#eee"} %>
+<%= line_chart @threemonths, title: "3 month value development", library: {backgroundColor: "#eee"} %>
 
 <%= link_to "Edit", edit_nasdaq_instrument_path(@nasdaq_instrument) %> |
 <%= link_to "Back", nasdaq_instruments_path %>

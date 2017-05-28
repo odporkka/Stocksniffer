@@ -5,7 +5,10 @@ class CsvReader
   def self.read_nasdaq_instruments
     CSV.foreach(self.parse_headers(self.nasdaq_file, self.nasdaq_headers), :headers => true) do |row|
       begin
-        NasdaqInstrument.create!(row.to_hash.slice("name", "symbol"))
+        instrument = NasdaqInstrument.new(row.to_hash.slice("name", "symbol"))
+        instrument.google_finance_object = GoogleFinanceObject.create!
+        instrument.exchange = "NASDAQ"
+        instrument.save!
       rescue Exception => e
         puts "Error #{e}"
         next
@@ -18,7 +21,10 @@ class CsvReader
     CSV.foreach(self.parse_headers(self.xetra_file, self.xetra_headers),
                 :headers => true) do |row|
       begin
-        XetraInstrument.create!(row.to_hash.slice("name", "isin", "symbol"))
+        instrument = XetraInstrument.new(row.to_hash.slice("name", "isin", "symbol"))
+        instrument.google_finance_object = GoogleFinanceObject.create!
+        instrument.exchange = "XETRA"
+        instrument.save!
       rescue Exception => e
         puts "Error #{e}"
         next

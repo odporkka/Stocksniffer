@@ -13,6 +13,7 @@ class NasdaqInstrumentsController < ApplicationController
   # GET /nasdaq_instruments/1
   # GET /nasdaq_instruments/1.json
   def show
+    @gfc = @nasdaq_instrument.google_finance_object
     @weeks = AlphaVantageApi.fetch_weekly(@nasdaq_instrument.symbol)
     @threemonths = AlphaVantageApi.three_month_weekly(@nasdaq_instrument.symbol)
     @threemonthpr = AlphaVantageApi.three_month_dev_pr(@nasdaq_instrument.symbol)
@@ -31,6 +32,7 @@ class NasdaqInstrumentsController < ApplicationController
   # POST /nasdaq_instruments.json
   def create
     @nasdaq_instrument = NasdaqInstrument.new(nasdaq_instrument_params)
+    @nasdaq_instrument.google_finance_object = GoogleFinanceObject.create!
 
     respond_to do |format|
       if @nasdaq_instrument.save
