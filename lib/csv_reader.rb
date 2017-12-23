@@ -6,7 +6,7 @@ class CsvReader
     CSV.foreach(self.parse_headers(self.nasdaq_file, self.nasdaq_headers), :headers => true) do |row|
       begin
         instrument = NasdaqInstrument.new(row.to_hash.slice("name", "symbol"))
-        instrument.google_finance_object = GoogleFinanceObject.create!
+        instrument.finance_object = FinanceObject.create!
         instrument.exchange = "NASDAQ"
         instrument.save!
       rescue Exception => e
@@ -22,7 +22,7 @@ class CsvReader
                 :headers => true) do |row|
       begin
         instrument = XetraInstrument.new(row.to_hash.slice("name", "isin", "symbol"))
-        instrument.google_finance_object = GoogleFinanceObject.create!
+        instrument.finance_object = FinanceObject.create!
         instrument.exchange = "XETRA"
         instrument.save!
       rescue Exception => e

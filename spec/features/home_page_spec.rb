@@ -25,6 +25,6 @@ describe "Home page" do
   end
 
   def canned_answer
-    File.read(Rails.root+"spec/resources/test_search.html")
+    File.read(Rails.root+"spec/resources/google_test_scrape.html")
   end
 end

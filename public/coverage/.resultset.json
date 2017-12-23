@@ -34,14 +34,17 @@
       ],
       "/Users/ode/Projects/stocksniffer/app/controllers/home_controller.rb": [
         1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
         null,
         1,
         1,
         1,
         null,
-        null,
-        1,
-        1,
         1,
         null,
         null,
@@ -70,6 +73,35 @@
         22,
         22,
         22,
+        null,
+        2,
+        2,
+        null,
+        null,
+        1,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/ode/Projects/stocksniffer/lib/yahoo_finance_scraper.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        2,
+        null,
+        2,
+        2,
+        2,
+        null,
+        2,
+        2,
+        16,
+        16,
+        16,
         null,
         2,
         2,
@@ -322,7 +354,7 @@
         null,
         null
       ],
-      "/Users/ode/Projects/stocksniffer/app/models/google_finance_object.rb": [
+      "/Users/ode/Projects/stocksniffer/app/models/finance_object.rb": [
         1,
         1,
         null
@@ -420,6 +452,6 @@
         null
       ]
     },
-    "timestamp": 1495968039
+    "timestamp": 1514038206
   }
 }

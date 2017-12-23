@@ -12,15 +12,15 @@
 
 ActiveRecord::Schema.define(version: 3) do
 
-  create_table "google_finance_objects", force: :cascade do |t|
+  create_table "finance_objects", force: :cascade do |t|
     t.string   "owner_instrument_type"
     t.integer  "owner_instrument_id"
-    t.integer  "open"
-    t.integer  "mktcap"
-    t.integer  "shares"
-    t.integer  "pe"
-    t.integer  "eps"
-    t.integer  "beta"
+    t.float    "mktcap"
+    t.float    "shares"
+    t.float    "open"
+    t.float    "pe"
+    t.float    "eps"
+    t.float    "beta"
     t.float    "inst_own"
     t.string   "range"
     t.string   "one_year"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.string   "div_per_yield"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["owner_instrument_type", "owner_instrument_id"], name: "index_owner_instrument_on_google_finance_object"
+    t.index ["owner_instrument_type", "owner_instrument_id"], name: "index_owner_instrument_on_finance_object"
   end
 
   create_table "nasdaq_instruments", force: :cascade do |t|

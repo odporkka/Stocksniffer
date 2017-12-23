@@ -1,7 +1,7 @@
-class CreateGoogleFinanceObject < ActiveRecord::Migration[5.0]
+class CreateFinanceObject < ActiveRecord::Migration[5.0]
   def change
-    create_table :google_finance_objects do |t|
-      t.references :owner_instrument, polymorphic: true, index: {:name => "index_owner_instrument_on_google_finance_object"}
+    create_table :finance_objects do |t|
+      t.references :owner_instrument, polymorphic: true, index: {:name => "index_owner_instrument_on_finance_object"}
       t.float :mktcap
       t.float :shares
       t.float :open

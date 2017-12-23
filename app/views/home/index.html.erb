@@ -13,7 +13,11 @@
 </div>
 
 <div>
-  <%= @stock %>
+  Google scraper: <%= @google_stock %>
+</div>
+
+<div>
+  Yahoo scraper: <%= @yahoo_stock %>
 </div>
 
 <div>
@@ -23,7 +27,7 @@
   Microsoft Corporation - MSFT<br>
   Tesla Inc. - TSLA<br>
   ... <br>
-  (https://www.google.com/finance?q=#{exchange}%3A#{symbol}) <br>
-  <br>
+  (https://www.google.com/finance?q=#{exchange}%3A#{symbol})<br>
+  (https://finance.yahoo.com/quote/#{symbol}?p=#{symbol})<br>
   <i>Latest fetch as HTML at Rails.root("tmp/latest_search.html")</i>
 </div>

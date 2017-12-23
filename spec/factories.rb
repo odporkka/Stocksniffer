@@ -3,16 +3,16 @@ FactoryGirl.define do
     name "Test Inc."
     isin "TST-123"
     symbol "TST"
-    google_finance_object
+    finance_object
   end
 
   factory :nasdaq_instrument do
     name "Test Inc."
     symbol "TST"
-    google_finance_object
+    finance_object
   end
 
-  factory :google_finance_object do
+  factory :finance_object do
     mktcap 100.0
     shares 1.0
     open 100.0

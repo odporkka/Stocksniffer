@@ -12,7 +12,7 @@ class XetraInstrumentsController < ApplicationController
   # GET /xetra_instruments/1
   # GET /xetra_instruments/1.json
   def show
-    @gfc = @xetra_instrument.google_finance_object
+    @fo = @xetra_instrument.finance_object
   end
 
   # GET /xetra_instruments/new
@@ -28,7 +28,7 @@ class XetraInstrumentsController < ApplicationController
   # POST /xetra_instruments.json
   def create
     @xetra_instrument = XetraInstrument.new(xetra_instrument_params)
-    @xetra_instrument.google_finance_object = GoogleFinanceObject.create!
+    @xetra_instrument.finance_object = FinanceObject.create!
 
     respond_to do |format|
       if @xetra_instrument.save

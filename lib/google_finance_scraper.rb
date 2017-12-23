@@ -17,7 +17,7 @@ class GoogleFinanceScraper
       val = row.css('.val').text.strip.gsub(/[[:space:]]/, '')
       data[key] = val
     end
-    File.write(Rails.root+'tmp/last_search.html', parse_page)
+    File.write(Rails.root+'tmp/last_google_scrape.html', parse_page)
     data
   end
 
