@@ -3,6 +3,7 @@ require "rails_helper"
 describe "NASDAQ pages" do
   before :each do
     allow(AlphaVantageApi).to receive(:fetch_weekly)
+    allow(YahooFinanceScraper).to receive(:update_instrument).and_return(FactoryGirl.create(:finance_object))
   end
 
   describe "index" do
@@ -50,7 +51,7 @@ describe "NASDAQ pages" do
 
       it "lets user delete instruments", :js => true do
         visit nasdaq_instruments_path
-        accept_alert do
+        accept_confirm do
           first(:link, "Destroy").click
         end
         expect(page).to have_content("was successfully destroyed")

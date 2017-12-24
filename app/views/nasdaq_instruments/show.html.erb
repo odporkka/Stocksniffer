@@ -20,11 +20,14 @@
     <% end %>
   </div>
   <div class="col col-sm-4">
+    <strong>Last trading close:</strong>
+    <%= @fo.close %>
+    </br>
     <strong>Last trading day open:</strong>
     <%= @fo.open %>
     </br>
     <strong>Market cap:</strong>
-    <%= @fo.mktcap %>
+    <%= @fo.mkt_cap %>
     </br>
     <strong>52 week movement:</strong>
     <%= @fo.one_year %>

@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 3) do
   create_table "finance_objects", force: :cascade do |t|
     t.string   "owner_instrument_type"
     t.integer  "owner_instrument_id"
-    t.float    "mktcap"
-    t.float    "shares"
+    t.float    "close"
     t.float    "open"
+    t.float    "mkt_cap"
+    t.float    "shares"
     t.float    "pe"
     t.float    "eps"
     t.float    "beta"

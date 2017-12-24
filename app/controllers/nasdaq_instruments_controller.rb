@@ -1,8 +1,10 @@
 require "alpha_vantage_api"
 require "csv_reader"
+require "yahoo_finance_scraper"
 
 class NasdaqInstrumentsController < ApplicationController
-  before_action :set_nasdaq_instrument, only: [:show, :edit, :update, :destroy]
+  before_action :set_nasdaq_instrument, only: [:edit, :update, :destroy]
+  before_action :set_and_update_nasdaq_instrument, only: [:show]
   before_action :set_nasdaq_instruments, only: [:index]
 
   # GET /nasdaq_instruments
@@ -13,7 +15,6 @@ class NasdaqInstrumentsController < ApplicationController
   # GET /nasdaq_instruments/1
   # GET /nasdaq_instruments/1.json
   def show
-    @fo = @nasdaq_instrument.finance_object
     @weeks = AlphaVantageApi.fetch_weekly(@nasdaq_instrument.symbol)
     @threemonths = AlphaVantageApi.three_month_weekly(@nasdaq_instrument.symbol)
     @threemonthpr = AlphaVantageApi.three_month_dev_pr(@nasdaq_instrument.symbol)
@@ -85,6 +86,11 @@ class NasdaqInstrumentsController < ApplicationController
 
   def set_nasdaq_instrument
     @nasdaq_instrument = NasdaqInstrument.find(params[:id])
+  end
+
+  def set_and_update_nasdaq_instrument
+    @nasdaq_instrument = NasdaqInstrument.find(params[:id])
+    @fo = YahooFinanceScraper.update_instrument(@nasdaq_instrument.symbol)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

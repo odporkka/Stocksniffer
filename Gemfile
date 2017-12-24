@@ -70,5 +70,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'webmock'
   gem 'poltergeist'
+  gem 'database_cleaner'
 end
 

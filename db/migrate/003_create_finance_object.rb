@@ -2,9 +2,10 @@ class CreateFinanceObject < ActiveRecord::Migration[5.0]
   def change
     create_table :finance_objects do |t|
       t.references :owner_instrument, polymorphic: true, index: {:name => "index_owner_instrument_on_finance_object"}
-      t.float :mktcap
-      t.float :shares
+      t.float :close
       t.float :open
+      t.float :mkt_cap
+      t.float :shares
       t.float :pe
       t.float :eps
       t.float :beta

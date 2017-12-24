@@ -13,8 +13,9 @@ FactoryGirl.define do
   end
 
   factory :finance_object do
-    mktcap 100.0
+    mkt_cap 100.0
     shares 1.0
+    close 99.9
     open 100.0
     pe 20.0
     eps 10.0

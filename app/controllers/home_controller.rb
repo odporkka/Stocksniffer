@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
   def scrape
     @google_stock = GoogleFinanceScraper.fetch(params[:exchange], params[:search])
-    @yahoo_stock = YahooFinanceScraper.fetch(params[:exchange], params[:search])
+    @yahoo_stock = YahooFinanceScraper.fetch(params[:search])
 
     render :index
   end
