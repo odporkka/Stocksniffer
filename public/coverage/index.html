@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-12-25T16:01:33+02:00">2017-12-25T16:01:33+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-12-25T21:49:32+02:00">2017-12-25T21:49:32+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.57
+         4.56
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>15</b> files in total.
-    <b>258</b> relevant lines. 
-    <span class="green"><b>258</b> lines covered</span> and
+    <b>259</b> relevant lines. 
+    <span class="green"><b>259</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -73,9 +73,9 @@
       <tr>
         <td class="strong"><a href="#b33ef3e9b74c1cbf49f0d717f4898a96f2bcb925" class="src_link" title="app/controllers/nasdaq_instruments_controller.rb">app/controllers/nasdaq_instruments_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>100</td>
-        <td>49</td>
-        <td>49</td>
+        <td>102</td>
+        <td>50</td>
+        <td>50</td>
         <td>0</td>
         <td>1.9</td>
       </tr>
@@ -220,8 +220,8 @@
   <a name="Controllers"></a>
   <div>
     <b>4</b> files in total.
-    <b>104</b> relevant lines. 
-    <span class="green"><b>104</b> lines covered</span> and
+    <b>105</b> relevant lines. 
+    <span class="green"><b>105</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -261,9 +261,9 @@
       <tr>
         <td class="strong"><a href="#b33ef3e9b74c1cbf49f0d717f4898a96f2bcb925" class="src_link" title="app/controllers/nasdaq_instruments_controller.rb">app/controllers/nasdaq_instruments_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>100</td>
-        <td>49</td>
-        <td>49</td>
+        <td>102</td>
+        <td>50</td>
+        <td>50</td>
         <td>0</td>
         <td>1.9</td>
       </tr>
@@ -781,8 +781,8 @@
     <h3>app/controllers/nasdaq_instruments_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>49</b> relevant lines. 
-      <span class="green"><b>49</b> lines covered</span> and
+      <b>50</b> relevant lines. 
+      <span class="green"><b>50</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1225,166 +1225,178 @@
         <li class="covered" data-hits="1" data-linenumber="73">
           <span class="hits">1</span>
           
-          <code class="ruby">  def readCsv</code>
+          <code class="ruby">  def read_csv</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="74">
           <span class="hits">1</span>
           
-          <code class="ruby">    CsvReader.read_nasdaq_instruments</code>
+          <code class="ruby">    if !Delayed::Job.any?{|job| job.handler.include? &#39;CsvReader&#39;}</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="75">
           <span class="hits">1</span>
           
-          <code class="ruby">    redirect_to nasdaq_instruments_path</code>
+          <code class="ruby">      CsvReader.delay.read_nasdaq_instruments</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="77">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="78">
+        <li class="covered" data-hits="1" data-linenumber="77">
           <span class="hits">1</span>
           
-          <code class="ruby">  private</code>
+          <code class="ruby">    redirect_to nasdaq_instruments_path</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="79">
           
           
-          <code class="ruby">  # Use callbacks to share common setup or constraints between actions.</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="80">
           <span class="hits">1</span>
           
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">  # Use callbacks to share common setup or constraints between actions.</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="82">
+          <span class="hits">1</span>
+          
           <code class="ruby">  def set_nasdaq_instruments</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="81">
+        <li class="covered" data-hits="10" data-linenumber="83">
           <span class="hits">10</span>
           
           <code class="ruby">    @nasdaq_instruments = NasdaqInstrument.</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="82">
+        <li class="never" data-hits="" data-linenumber="84">
           
           
           <code class="ruby">        where(&quot;name like ?&quot;, &quot;%#{params[:search]}%&quot;).</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby">        paginate(:page =&gt; params[:page], :per_page =&gt; 50).</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="84">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby">        order(&quot;name&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="85">
+        <li class="never" data-hits="" data-linenumber="87">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="never" data-hits="" data-linenumber="88">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="87">
+        <li class="covered" data-hits="1" data-linenumber="89">
           <span class="hits">1</span>
           
           <code class="ruby">  def set_nasdaq_instrument</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="88">
+        <li class="covered" data-hits="6" data-linenumber="90">
           <span class="hits">6</span>
           
           <code class="ruby">    @nasdaq_instrument = NasdaqInstrument.find(params[:id])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="89">
+        <li class="never" data-hits="" data-linenumber="91">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="90">
+        <li class="never" data-hits="" data-linenumber="92">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="91">
+        <li class="covered" data-hits="1" data-linenumber="93">
           <span class="hits">1</span>
           
           <code class="ruby">  def set_and_update_nasdaq_instrument</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="92">
+        <li class="covered" data-hits="4" data-linenumber="94">
           <span class="hits">4</span>
           
           <code class="ruby">    @nasdaq_instrument = NasdaqInstrument.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="93">
+        <li class="covered" data-hits="4" data-linenumber="95">
           <span class="hits">4</span>
           
           <code class="ruby">    @fo = YahooFinanceScraper.update_instrument(@nasdaq_instrument.symbol)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="94">
+        <li class="never" data-hits="" data-linenumber="96">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="95">
+        <li class="never" data-hits="" data-linenumber="97">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="96">
+        <li class="never" data-hits="" data-linenumber="98">
           
           
           <code class="ruby">  # Never trust parameters from the scary internet, only allow the white list through.</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="97">
+        <li class="covered" data-hits="1" data-linenumber="99">
           <span class="hits">1</span>
           
           <code class="ruby">  def nasdaq_instrument_params</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="98">
+        <li class="covered" data-hits="4" data-linenumber="100">
           <span class="hits">4</span>
           
           <code class="ruby">    params.require(:nasdaq_instrument).permit(:name, :symbol)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="99">
+        <li class="never" data-hits="" data-linenumber="101">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="100">
+        <li class="never" data-hits="" data-linenumber="102">
           
           
           <code class="ruby">end</code>

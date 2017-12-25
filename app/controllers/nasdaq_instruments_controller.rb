@@ -70,8 +70,10 @@ class NasdaqInstrumentsController < ApplicationController
     end
   end
 
-  def readCsv
-    CsvReader.read_nasdaq_instruments
+  def read_csv
+    if !Delayed::Job.any?{|job| job.handler.include? 'CsvReader'}
+      CsvReader.delay.read_nasdaq_instruments
+    end
     redirect_to nasdaq_instruments_path
   end
 

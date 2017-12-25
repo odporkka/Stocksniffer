@@ -17,5 +17,8 @@ module Stocksniffer
       require File.expand_path("../diagnostic.rb", __FILE__)
       config.middleware.use(Stocksniffer::DiagnosticMiddleware)
     end
+
+    # Setup active_job
+    config.active_job.queue_adapter = :delayed_job
   end
 end

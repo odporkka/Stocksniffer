@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  post 'nasdaq_instruments/readCsv' => 'nasdaq_instruments#readCsv'
+  post 'nasdaq_instruments/read_csv' => 'nasdaq_instruments#read_csv'
   post 'xetra_instruments/readCsv' => 'xetra_instruments#readCsv'
   post '/' => 'home#scrape'
 

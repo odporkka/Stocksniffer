@@ -38,6 +38,8 @@ gem 'bootstrap-sass'
 gem 'will_paginate', '~> 3.1.0'
 gem 'pry'
 gem 'nokogiri'
+gem 'delayed_job_active_record'
+gem 'daemons'
 #gem 'fastercsv'
 
 group :production do
