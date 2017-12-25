@@ -20,27 +20,34 @@
     <% end %>
   </div>
   <div class="col col-sm-4">
-    <strong>Last trading close:</strong>
+    <strong>Close:</strong>
     <%= @fo.close %>
     </br>
-    <strong>Last trading day open:</strong>
+    <strong>Open:</strong>
     <%= @fo.open %>
     </br>
     <strong>Market cap:</strong>
-    <%= @fo.mkt_cap %>
+    <%= number_with_delimiter(@fo.mkt_cap, delimiter: " ") %> m
     </br>
-    <strong>52 week movement:</strong>
-    <%= @fo.one_year %>
+    <strong>52 week range:</strong>
+    <%= @fo.low52 %> - <%= @fo.high52 %>
+    </br>
+    <strong>Beta:</strong>
+    <%= @fo.beta %>
+    </br>
   </div>
   <div class="col col-sm-4">
-    <strong>P/E:</strong>
-    <%= @fo.pe %>
+    <strong>Trailing-P/E:</strong>
+    <%= @fo.t_pe %>
+    </br>
+    <strong>Forward-P/E:</strong>
+    <%= @fo.f_pe %>
     </br>
     <strong>Shares:</strong>
-    <%= @fo.shares %>
+    <%= number_with_delimiter(@fo.shares, delimiter: " ") %> m
     </br>
     <strong>Earnings per share:</strong>
-    <%= @fo.eps %>
+    <%= @fo.eps %> (12mth)
   </div>
 </div>
 

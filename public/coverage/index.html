@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-12-24T20:45:22+02:00">2017-12-24T20:45:22+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-12-25T16:01:33+02:00">2017-12-25T16:01:33+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.74
+         4.57
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>15</b> files in total.
-    <b>245</b> relevant lines. 
-    <span class="green"><b>245</b> lines covered</span> and
+    <b>258</b> relevant lines. 
+    <span class="green"><b>258</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -193,11 +193,11 @@
       <tr>
         <td class="strong"><a href="#16cb32ac8f030e39b6ba7c6a0acdda4fdd419fe7" class="src_link" title="lib/yahoo_finance_scraper.rb">lib/yahoo_finance_scraper.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>66</td>
-        <td>44</td>
-        <td>44</td>
+        <td>82</td>
+        <td>57</td>
+        <td>57</td>
         <td>0</td>
-        <td>12.0</td>
+        <td>9.6</td>
       </tr>
       
     </tbody>
@@ -508,15 +508,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.59
+         7.02
        </span>
     </span> hits/line)
   </h2>
   <a name="Libraries"></a>
   <div>
     <b>4</b> files in total.
-    <b>126</b> relevant lines. 
-    <span class="green"><b>126</b> lines covered</span> and
+    <b>139</b> relevant lines. 
+    <span class="green"><b>139</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -566,11 +566,11 @@
       <tr>
         <td class="strong"><a href="#16cb32ac8f030e39b6ba7c6a0acdda4fdd419fe7" class="src_link" title="lib/yahoo_finance_scraper.rb">lib/yahoo_finance_scraper.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>66</td>
-        <td>44</td>
-        <td>44</td>
+        <td>82</td>
+        <td>57</td>
+        <td>57</td>
         <td>0</td>
-        <td>12.0</td>
+        <td>9.6</td>
       </tr>
       
     </tbody>
@@ -3253,8 +3253,8 @@
     <h3>lib/yahoo_finance_scraper.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>44</b> relevant lines. 
-      <span class="green"><b>44</b> lines covered</span> and
+      <b>57</b> relevant lines. 
+      <span class="green"><b>57</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -3571,88 +3571,184 @@
         <li class="covered" data-hits="1" data-linenumber="52">
           <span class="hits">1</span>
           
-          <code class="ruby">      fo.one_year = data[&#39;52 Week Range&#39;]</code>
+          <code class="ruby">      fo.open = data[&#39;Open&#39;].to_f</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="53">
           <span class="hits">1</span>
           
-          <code class="ruby">      fo.save!</code>
+          <code class="ruby">      fo.t_pe = data[&#39;Trailing P/E &#39;]</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="54">
           <span class="hits">1</span>
           
-          <code class="ruby">      return instrument.finance_object</code>
+          <code class="ruby">      fo.f_pe = data[&#39;Forward P/E 1&#39;]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="55">
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      fo.eps = data[&#39;EPS (TTM)&#39;]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">      fo.beta = data[&#39;Beta&#39;]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
+        <li class="covered" data-hits="1" data-linenumber="57">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">      fo.mkt_cap = self.to_millions(data[&#39;Market Cap&#39;])</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="58">
           <span class="hits">1</span>
           
-          <code class="ruby">  private</code>
+          <code class="ruby">      fo.shares = self.to_millions(data[&#39;Shares Outstanding 5&#39;])</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
-          <code class="ruby">  def self.summary_url(symbol)</code>
+          <code class="ruby">      fo.high52 = data[&#39;52 Week High 3&#39;].to_f</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="60">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
           
-          <code class="ruby">    &quot;https://finance.yahoo.com/quote/#{symbol}?p=#{symbol}&quot;</code>
+          <code class="ruby">      fo.low52 = data[&#39;52 Week Low 3&#39;].to_f</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      fo.save!</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      return instrument.finance_object</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="62">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="63">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def self.statistics_url(symbol)</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="64">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    &quot;https://finance.yahoo.com/quote/#{symbol}/key-statistics?p=#{symbol}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="65">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="67">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.summary_url(symbol)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="68">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    &quot;https://finance.yahoo.com/quote/#{symbol}?p=#{symbol}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="66">
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="71">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.statistics_url(symbol)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="72">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    &quot;https://finance.yahoo.com/quote/#{symbol}/key-statistics?p=#{symbol}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="75">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.to_millions(mkt_cap_string)</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="76">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    if (mkt_cap_string[-1]) == &#39;M&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="77">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      return mkt_cap_string[0..-2].to_f</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="78">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    elsif (mkt_cap_string[-1]) == &#39;B&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="79">
+          <span class="hits">3</span>
+          
+          <code class="ruby">      return (mkt_cap_string[0..-2].to_f) * 1000</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="80">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby">end</code>

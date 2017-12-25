@@ -6,13 +6,15 @@ class CreateFinanceObject < ActiveRecord::Migration[5.0]
       t.float :open
       t.float :mkt_cap
       t.float :shares
-      t.float :pe
+      t.float :t_pe
+      t.float :f_pe
       t.float :eps
       t.float :beta
       t.float :inst_own
+      t.float :high52
+      t.float :low52
 
       t.string :range
-      t.string :one_year
       t.string :vol_per_avg
       t.string :div_per_yield
 

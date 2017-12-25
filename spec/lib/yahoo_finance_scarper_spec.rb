@@ -14,6 +14,18 @@ describe "lib/ Yahoo Finance scraper" do
     expect(data["Previous Close"]).to eq("175.01")
   end
 
+  it "Should parse big numbers to millions" do
+    number = "999999.9B"
+    millions = YahooFinanceScraper.send(:to_millions, number)
+    expect(millions).to eq(999999900)
+  end
+
+  it "Keep millions as millions" do
+    number = "999999.9M"
+    millions = YahooFinanceScraper.send(:to_millions, number)
+    expect(millions).to eq(999999.9)
+  end
+
   it "Should update intrument right" do
     FactoryGirl.create(:nasdaq_instrument, name: "Apple Inc.", symbol: "AAPL")
     YahooFinanceScraper.update_instrument("AAPL")
